@@ -18,10 +18,10 @@ class Auth():
             path_with_slash = path_with_slash.rstrip(path_with_slash[-1])
         else:
             path_with_slash += '/'
-        if path_with_slash in excluded_path or path in excluded_path:
-            return False
-        else:
-            return True
+        for i in excluded_path:
+            if path_with_slash in i or path in i:
+                return False
+        return True
 
     def authorization_header(self, request=None) -> str:
         """authorization header"""
