@@ -21,6 +21,8 @@ class Auth():
         for i in excluded_path:
             if path_with_slash in i or path in i:
                 return False
+            if i in path or i in path_with_slash:
+                return False
         return True
 
     def authorization_header(self, request=None) -> str:
