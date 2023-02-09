@@ -2,6 +2,7 @@
 """Empty session"""
 from api.v1.auth.auth import Auth
 from uuid import uuid4
+from models.user import User
 
 from api.v1.views import users
 
@@ -29,7 +30,8 @@ class SessionAuth(Auth):
         user_id = self.user_id_by_session_id.get(session_id)
         return user_id
 
-    def current_user(self, request=None):
-        """current user"""
+    def current_user(self, request=None) -> User:
+        """Retrieves the user associated with the request.
+        """
         user_id = self.user_id_for_session_id(self.session_cookie(request))
-        return users.get(user_id)
+        return User.get(user_id)
