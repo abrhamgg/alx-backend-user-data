@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """auth module"""
+from typing import Union
 import bcrypt
 from db import DB
 from user import User
