@@ -40,7 +40,7 @@ class DB:
         self._session.commit()
         return new_user
 
-    def find_user_by(self, **kwargs):
+    def find_user_by(self, **kwargs) -> User:
         """finds a user by property"""
         if not kwargs:
             raise InvalidRequestError
@@ -52,7 +52,7 @@ class DB:
             raise (NoResultFound)
         return user
 
-    def update_user(self, user_id: int, **kwargs) -> User or None:
+    def update_user(self, user_id: int, **kwargs) -> None:
         """updates user by user_id"""
         user = self.find_user_by(id=user_id)
         for key, val in kwargs.items():
